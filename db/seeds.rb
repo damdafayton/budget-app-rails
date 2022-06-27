@@ -15,11 +15,11 @@ second_group = Group.create(name: 'Transportation' , icon:'Transportation', auth
 third_group = Group.create(name: 'Housing' , icon:'Housing', author_id: first_user.id)
 fourth_group = Group.create(name: 'Medical' , icon:'Medical', author_id: first_user.id)
 
-first_expenditure = Expenditure.group(name: "Pizza", amount: "4.8" author_id: first_user.id)
-second_expenditure = Expenditure.group(name: "Doner", amount: "5.5" author_id: first_user.id)
-third_expenditure = Expenditure.group(name: "Cola", amount: "1.2" author_id: first_user.id)
-fourth_expenditure = Expenditure.group(name: "Apartment", amount: "40" author_id: first_user.id)
-fifth_expenditure = Expenditure.group(name: "Train", amount: "12" author_id: first_user.id)
+first_expenditure = Expenditure.create(name: "Pizza", amount: 4.8, author_id: first_user.id)
+second_expenditure = Expenditure.create(name: "Doner", amount: 5.5, author_id: first_user.id)
+third_expenditure = Expenditure.create(name: "Cola", amount: 1.2, author_id: first_user.id)
+fourth_expenditure = Expenditure.create(name: "Apartment", amount: 40, author_id: first_user.id)
+fifth_expenditure = Expenditure.create(name: "Train", amount: 12, author_id: first_user.id)
 
 first_g_e = GroupExpenditure.create(group_id: first_group.id , expenditure_id: first_expenditure.id)
 second_g_e = GroupExpenditure.create(group_id: first_group.id , expenditure_id: second_expenditure.id)

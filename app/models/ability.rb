@@ -9,7 +9,7 @@ class Ability
     can :manage, Expenditure, author_id: user.id
     can :manage, Group, author_id: user.id
 
-    return unless user.admin?  # additional permissions for administrators
+    return unless user.is?(:admin)  # additional permissions for administrators
     can :manage, :all
     # Define abilities for the user here. For example:
     #
