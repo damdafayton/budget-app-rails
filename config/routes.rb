@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :group_expenditures
+  resources :expenditures
   resources :group_entities
   resources :groups
   resources :entities

@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_27_162528) do
-  create_table "entities", force: :cascade do |t|
-    t.integer "author_id", null: false
+ActiveRecord::Schema[7.0].define(version: 2022_06_27_164846) do
+  create_table "expenditures", force: :cascade do |t|
     t.string "name"
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_entities_on_author_id"
+    t.integer "author_id", null: false
+    t.index ["author_id"], name: "index_expenditures_on_author_id"
   end
 
-  create_table "group_entities", force: :cascade do |t|
+  create_table "group_expenditures", force: :cascade do |t|
     t.integer "group_id", null: false
-    t.integer "entity_id", null: false
+    t.integer "expenditure_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["entity_id"], name: "index_group_entities_on_entity_id"
-    t.index ["group_id"], name: "index_group_entities_on_group_id"
+    t.index ["expenditure_id"], name: "index_group_expenditures_on_expenditure_id"
+    t.index ["group_id"], name: "index_group_expenditures_on_group_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -44,8 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_162528) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "entities", "users", column: "author_id"
-  add_foreign_key "group_entities", "entities"
-  add_foreign_key "group_entities", "groups"
+  add_foreign_key "expenditures", "users", column: "author_id"
+  add_foreign_key "group_expenditures", "expenditures"
+  add_foreign_key "group_expenditures", "groups"
   add_foreign_key "groups", "users", column: "author_id"
 end
