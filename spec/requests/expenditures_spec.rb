@@ -13,7 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/expenditures', type: :request do
-  before :each  do
+  before :each do
     @user = User.all[0]
     sign_in @user
   end
@@ -21,11 +21,11 @@ RSpec.describe '/expenditures', type: :request do
   # Expenditure. As you add validations to Expenditure, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    {name: 'Pizza', amount: 4.8, author_id: @user.id}
+    { name: 'Pizza', amount: 4.8, author_id: @user.id }
   end
 
   let(:invalid_attributes) do
-    {name: 'Pizza'}
+    { name: 'Pizza' }
   end
 
   describe 'GET /index' do
@@ -91,7 +91,7 @@ RSpec.describe '/expenditures', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        {name: 'Pizza', amount: 99999, author_id: @user.id}
+        { name: 'Pizza', amount: 99_999, author_id: @user.id }
       end
 
       # it 'updates the requested expenditure' do

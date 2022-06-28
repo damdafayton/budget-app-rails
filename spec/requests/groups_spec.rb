@@ -13,7 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/groups', type: :request do
-  before :each  do
+  before :each do
     @user = User.all[0]
     sign_in @user
   end
@@ -21,7 +21,7 @@ RSpec.describe '/groups', type: :request do
   # Group. As you add validations to Group, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    {name: 'Food', author_id: @user.id}
+    { name: 'Food', author_id: @user.id }
   end
 
   let(:invalid_attributes) do
@@ -91,7 +91,7 @@ RSpec.describe '/groups', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        {name: "NEWNAME"}
+        { name: 'NEWNAME' }
       end
 
       # it 'updates the requested group' do

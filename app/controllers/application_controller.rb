@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   ERROR_MSG = 'Parameter missing!'.freeze
 
-  rescue_from ActionController::ParameterMissing do |e|
+  rescue_from ActionController::ParameterMissing do |_e|
     respond_to do |format|
       format.html do
         # error message
@@ -15,5 +15,4 @@ class ApplicationController < ActionController::Base
       format.json { render json: ERROR_MSG, status: 422 }
     end
   end
-
 end

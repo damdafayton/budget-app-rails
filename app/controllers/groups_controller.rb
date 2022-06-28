@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
     @group.icon = group_params[:name]
 
     respond_to do |format|
-      if group_params[:name].length<1
+      if group_params[:name].empty?
         flash[:error] = 'Group name can not be empty.'
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }

@@ -1,6 +1,7 @@
 @import "custom";
 @import "bootstrap" ;
 @import "font-awesome";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -17,55 +18,57 @@
  *= require_self
  */
 
-a{
+a {
   text-decoration: none;
 }
 
-i{
+i {
   width: 16px;
 }
 
-h1{
+h1 {
   font-size: 1.3rem;
   margin: 1rem 0.5rem;
 }
 
-h2{
+h2 {
   font-size: 1.1rem;
   margin: 1rem 0.5rem;
 }
 
-.error, .alert{
+.error,
+.alert {
   background: #dc3545;
 }
 
-.success, .notice{
+.success,
+.notice {
   // @extend .alert;
   background: #5fb523;
 }
 
-.pb-button-distance{
+.pb-button-distance {
   padding-bottom: 80px;
 }
 
-.form-control{
+.form-control {
   margin-bottom: 0.6rem;
 }
 
-.navbar-toggler-container{
-  height:30px;
+.navbar-toggler-container {
+  height: 30px;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
 
-.card{
+.card {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   // box-shadow: 1px 1px 1px black;
 }
 
-.font-size-08{
+.font-size-08 {
   font-size: 0.8rem;
 }

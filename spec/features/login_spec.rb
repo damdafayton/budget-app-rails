@@ -12,5 +12,4 @@ RSpec.describe 'Login tests' do
 
     expect(page).to have_content('Signed in successfully')
   end
-
 end
