@@ -22,7 +22,7 @@ a {
   text-decoration: none;
 }
 
-body{
+body {
   background-color: #f1f3f2;
 }
 
@@ -70,7 +70,8 @@ h2 {
 .card {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  &:hover{
+
+  &:hover {
     background-color: #edf4ff;
   }
 }
