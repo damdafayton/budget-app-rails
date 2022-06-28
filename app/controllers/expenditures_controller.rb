@@ -8,7 +8,7 @@ class ExpendituresController < ApplicationController
 
   # GET /expenditures or /expenditures.json
   def index
-    @expenditures = Expenditure.all
+    @transactions = Expenditure.where(author_id: current_user.id)
   end
 
   # GET /expenditures/1 or /expenditures/1.json
@@ -17,7 +17,8 @@ class ExpendituresController < ApplicationController
 
   # GET /expenditures/new
   def new
-    @expenditure = Expenditure.new
+    @groups = Group.where(author_id: current_user.id)
+    @transaction = Expenditure.new
   end
 
   # GET /expenditures/1/edit
@@ -26,15 +27,15 @@ class ExpendituresController < ApplicationController
 
   # POST /expenditures or /expenditures.json
   def create
-    @expenditure = Expenditure.new(expenditure_params)
+    @transaction = Expenditure.new(expenditure_params)
 
     respond_to do |format|
-      if @expenditure.save
-        format.html { redirect_to expenditure_url(@expenditure), notice: "Expenditure was successfully created." }
-        format.json { render :show, status: :created, location: @expenditure }
+      if @transaction.save
+        format.html { redirect_to expenditure_url(@transaction), notice: "Expenditure was successfully created." }
+        format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @expenditure.errors, status: :unprocessable_entity }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,19 +43,19 @@ class ExpendituresController < ApplicationController
   # PATCH/PUT /expenditures/1 or /expenditures/1.json
   def update
     respond_to do |format|
-      if @expenditure.update(expenditure_params)
-        format.html { redirect_to expenditure_url(@expenditure), notice: "Expenditure was successfully updated." }
-        format.json { render :show, status: :ok, location: @expenditure }
+      if @transaction.update(expenditure_params)
+        format.html { redirect_to expenditure_url(@transaction), notice: "Expenditure was successfully updated." }
+        format.json { render :show, status: :ok, location: @transaction }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @expenditure.errors, status: :unprocessable_entity }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /expenditures/1 or /expenditures/1.json
   def destroy
-    @expenditure.destroy
+    @transaction.destroy
 
     respond_to do |format|
       format.html { redirect_to expenditures_url, notice: "Expenditure was successfully destroyed." }
@@ -65,7 +66,7 @@ class ExpendituresController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_expenditure
-      @expenditure = Expenditure.find(params[:id])
+      @transaction = Expenditure.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

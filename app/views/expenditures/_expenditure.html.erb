@@ -1,17 +1,13 @@
-<div id="<%= dom_id expenditure %>">
-  <p>
-    <strong>Author:</strong>
-    <%= expenditure.author_id %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= expenditure.name %>
-  </p>
-
-  <p>
-    <strong>Amount:</strong>
-    <%= expenditure.amount %>
-  </p>
-
+<div id="<%= dom_id expenditure %>" class="card">
+  <div class='d-flex justify-content-between'>
+    <span>
+      <%= link_to expenditure.name, transaction_path(expenditure.id), class:'text-secondary' %>
+    </span>
+    <span class='fw-bold'>
+      <%= expenditure.amount %>$
+    </span>
+  </div>
+  <div class='font-size-08 text-secondary'>
+    <%= expenditure.created_at.strftime('%d %b %Y')%>
+  </div>
 </div>

@@ -11,7 +11,7 @@ RSpec.describe "group_expenditures/edit", type: :view do
   it "renders the edit group_expenditure form" do
     render
 
-    assert_select "form[action=?][method=?]", group_expenditure_path(@group_expenditure), "post" do
+    assert_select "form[action=?][method=?]", group_transaction_path(@group_expenditure), "post" do
 
       assert_select "input[name=?]", "group_expenditure[group_id]"
 

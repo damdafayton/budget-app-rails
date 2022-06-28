@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :group_expenditures
-  resources :expenditures
+  resources :transactions, controller: :expenditures, as: :transactions
   resources :groups
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -21,10 +21,33 @@ a{
   text-decoration: none;
 }
 
+i{
+  width: 16px;
+}
+
+h1{
+  font-size: 1.2rem;
+  margin: 1rem 0.5rem;
+}
+
+.form-control{
+  margin-bottom: 0.6rem;
+}
+
 .navbar-toggler-container{
   height:30px;
 }
 
 .cursor-pointer{
   cursor: pointer;
+}
+
+.card{
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  // box-shadow: 1px 1px 1px black;
+}
+
+.font-size-08{
+  font-size: 0.8rem;
 }

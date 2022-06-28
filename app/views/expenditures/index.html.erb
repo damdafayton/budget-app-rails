@@ -1,7 +1,13 @@
 <p style="color: green"><%= notice %></p>
+<div id="expenditures" class='w-100'>
+  <% @transactions&.each do |transaction| %>
+    <%= render partial: 'expenditure', locals: {expenditure: transaction} %>
+  <% end %>
+</div>
 
-<h1>Expenditures</h1>
-
-
-
-<%= link_to "New expenditure", new_expenditure_path %>
+<div>
+  <%= link_to(new_transaction_path, 
+      html_options = {class:'btn btn-success w-100 position-absolute bottom-0 start-0 rounded-0 text-white py-2'}) do %>
+    <div class='py-2 border border-2'>NEW TRANSACTION</div>
+  <% end %>
+</div>
