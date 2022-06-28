@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
       format.json { render json: ERROR_MSG, status: 422 }
     end
   end
+
+  private
+
+  def require_new_user
+    current_user.email != 'fake@fake.com'
+  end
 end
