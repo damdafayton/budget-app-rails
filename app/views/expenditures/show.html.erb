@@ -3,8 +3,6 @@
 <%= render @transaction %>
 
 <div>
-  <%= link_to "Edit this expenditure", edit_transaction_path(@transaction) %> |
-  <%= link_to "Back to expenditures", transactions_path %>
-
-  <%= button_to "Destroy this expenditure", transaction_path(@transaction.id), method: :delete %>
+  <%= link_to "Edit", edit_expenditure_path(@transaction), class:'btn btn-warning d-block mb-2 text-white' %>
+  <%= button_to "Destroy", expenditure_path(@transaction.id), method: :delete, class:'btn btn-danger' %>
 </div>

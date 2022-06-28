@@ -24,6 +24,7 @@ class ExpendituresController < ApplicationController
 
   # GET /expenditures/1/edit
   def edit
+    @transaction = Expenditure.find(params[:id])
   end
 
   # POST /expenditures or /expenditures.json
@@ -36,7 +37,7 @@ class ExpendituresController < ApplicationController
         group_id = params[:expenditure][:group]
         group_expenditure = GroupExpenditure.new({group_id: group_id, expenditure_id: @transaction.id})
         group_expenditure.save
-        format.html { redirect_to transaction_url(@transaction), notice: "Expenditure was successfully created." }
+        format.html { redirect_to expenditure_url(@transaction), notice: "Expenditure was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,7 +50,7 @@ class ExpendituresController < ApplicationController
   def update
     respond_to do |format|
       if @transaction.update(expenditure_params)
-        format.html { redirect_to transaction_url(@transaction), notice: "Expenditure was successfully updated." }
+        format.html { redirect_to expenditure_url(@transaction), notice: "Expenditure was successfully updated." }
         format.json { render :show, status: :ok, location: @transaction }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,7 +68,7 @@ class ExpendituresController < ApplicationController
     # rescue StandardError
     #   nil
     respond_to do |format|
-      format.html { redirect_to transactions_url, notice: "Expenditure was successfully destroyed." }
+      format.html { redirect_to expenditures_url, notice: "Expenditure was successfully destroyed." }
       format.json { head :no_content }
     end
   end

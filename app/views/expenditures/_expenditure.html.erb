@@ -1,7 +1,7 @@
-<div id="<%= dom_id expenditure %>" class="card">
+<div id="<%= dom_id expenditure %>" class="card w-100">
   <div class='d-flex justify-content-between'>
     <span>
-      <%= link_to expenditure.name, transaction_path(expenditure.id), class:'text-secondary' %>
+      <%= link_to expenditure.name, expenditure_path(expenditure.id), class:'text-secondary' %>
     </span>
     <span class='fw-bold'>
       <%= expenditure.amount %>$
