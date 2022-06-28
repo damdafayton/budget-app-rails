@@ -35,6 +35,15 @@ h2{
   margin: 1rem 0.5rem;
 }
 
+.error, .alert{
+  background: #dc3545;
+}
+
+.success, .notice{
+  // @extend .alert;
+  background: #5fb523;
+}
+
 .pb-button-distance{
   padding-bottom: 80px;
 }

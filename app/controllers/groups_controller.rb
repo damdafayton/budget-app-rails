@@ -9,8 +9,6 @@ class GroupsController < ApplicationController
   # GET /groups or /groups.json
   def index
     @groups = Group.where(author_id: current_user.id)
-    # @page_name = @@page_name
-    p @groups
   end
 
   # GET /groups/1 or /groups/1.json
@@ -31,9 +29,15 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
+    @group.author_id = current_user.id
+    @group.icon = group_params[:name]
 
     respond_to do |format|
-      if @group.save
+      if group_params[:name].length<1
+        flash[:error] = 'Group name can not be empty.'
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      elsif @group.save
         format.html { redirect_to group_url(@group), notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
@@ -75,6 +79,8 @@ class GroupsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def group_params
-    params.require(:group).permit(:name, :icon, :author_id)
+    params.require(:group).permit(:name) do |group_params|
+      group_params.require(:name)
+    end
   end
 end

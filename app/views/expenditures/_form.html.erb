@@ -1,10 +1,10 @@
 <%= form_with(model: expenditure)  do |form| %>
-  <% if expenditure.errors.any? %>
+  <% if expenditure&.errors&.any? %>
     <div style="color: red">
-      <h2><%= pluralize(expenditure.errors.count, "error") %> prohibited this expenditure from being saved:</h2>
+      <h2><%= pluralize(expenditure.errors.count, "error") %> prohibited this transaction from being saved:</h2>
 
       <ul>
-        <% expenditure.errors.each do |error| %>
+        <% expenditure&.errors&.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

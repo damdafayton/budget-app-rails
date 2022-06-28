@@ -48,8 +48,12 @@ class ExpendituresController < ApplicationController
 
   # PATCH/PUT /expenditures/1 or /expenditures/1.json
   def update
+    group_id_new = params[:expenditure][:group]
+    expenditure_id = params[:expenditure][:id]
+    group_expenditure = GroupExpenditure.where({expenditure_id: expenditure_id})
     respond_to do |format|
-      if @transaction.update(expenditure_params)
+      if @transaction.update(expenditure_params.except(:group))
+        group_expenditure.update({group_id: group_id_new, expenditure_id: expenditure_id})
         format.html { redirect_to expenditure_url(@transaction), notice: 'Expenditure was successfully updated.' }
         format.json { render :show, status: :ok, location: @transaction }
       else
@@ -82,6 +86,10 @@ class ExpendituresController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def expenditure_params
-    params.require(:expenditure).permit(:name, :amount)
+    p params
+    params.require(:expenditure).permit(:name, :amount, :group).tap do |expenditure_params|
+      expenditure_params.require(:name)
+      expenditure_params.require(:amount)
+    end
   end
 end
