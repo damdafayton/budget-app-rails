@@ -1,9 +1,16 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
+  
+  def initialize
+    super()
+    @page_name = 'GROUPS'
+  end
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.where(author_id: current_user.id)
+    # @page_name = @@page_name
+    p @groups
   end
 
   # GET /groups/1 or /groups/1.json

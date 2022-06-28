@@ -11,22 +11,11 @@
     </div>
   <% end %>
 
-  <div>
+  <div class='mb-2'>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
-
   <div>
-    <%= form.label :icon, style: "display: block" %>
-    <%= form.text_field :icon %>
-  </div>
-
-  <div>
-    <%= form.label :author_id, style: "display: block" %>
-    <%= form.text_field :author_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success text-white' %>
   </div>
 <% end %>

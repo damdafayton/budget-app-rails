@@ -1,6 +1,11 @@
 class ExpendituresController < ApplicationController
   before_action :set_expenditure, only: %i[ show edit update destroy ]
 
+  def initialize
+    super()
+    @page_name = 'TRANSACTIONS'
+  end
+
   # GET /expenditures or /expenditures.json
   def index
     @expenditures = Expenditure.all

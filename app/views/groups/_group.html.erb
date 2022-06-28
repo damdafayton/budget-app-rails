@@ -1,17 +1,8 @@
 <div id="<%= dom_id group %>">
-  <p>
-    <strong>Name:</strong>
-    <%= group.name %>
-  </p>
 
   <p>
-    <strong>Icon:</strong>
-    <%= group.icon %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= group.author_id %>
+    <%= icon('fa-solid', 'layer-group')%>
+    <%= link_to group.name, group %>
   </p>
 
 </div>
