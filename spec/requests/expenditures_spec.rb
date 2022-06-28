@@ -36,7 +36,7 @@ RSpec.describe "/expenditures", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       expenditure = Expenditure.create! valid_attributes
-      get expenditure_url(expenditure)
+      get transaction_url(expenditure)
       expect(response).to be_successful
     end
   end
@@ -94,14 +94,14 @@ RSpec.describe "/expenditures", type: :request do
 
       it "updates the requested expenditure" do
         expenditure = Expenditure.create! valid_attributes
-        patch expenditure_url(expenditure), params: { expenditure: new_attributes }
+        patch transaction_url(expenditure), params: { expenditure: new_attributes }
         expenditure.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the expenditure" do
         expenditure = Expenditure.create! valid_attributes
-        patch expenditure_url(expenditure), params: { expenditure: new_attributes }
+        patch transaction_url(expenditure), params: { expenditure: new_attributes }
         expenditure.reload
         expect(response).to redirect_to(expenditure_url(expenditure))
       end
@@ -111,7 +111,7 @@ RSpec.describe "/expenditures", type: :request do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         expenditure = Expenditure.create! valid_attributes
-        patch expenditure_url(expenditure), params: { expenditure: invalid_attributes }
+        patch transaction_url(expenditure), params: { expenditure: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
@@ -122,13 +122,13 @@ RSpec.describe "/expenditures", type: :request do
     it "destroys the requested expenditure" do
       expenditure = Expenditure.create! valid_attributes
       expect {
-        delete expenditure_url(expenditure)
+        delete transaction_url(expenditure)
       }.to change(Expenditure, :count).by(-1)
     end
 
     it "redirects to the expenditures list" do
       expenditure = Expenditure.create! valid_attributes
-      delete expenditure_url(expenditure)
+      delete transaction_url(expenditure)
       expect(response).to redirect_to(expenditures_url)
     end
   end

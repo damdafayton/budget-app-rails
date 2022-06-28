@@ -13,6 +13,7 @@ class ExpendituresController < ApplicationController
 
   # GET /expenditures/1 or /expenditures/1.json
   def show
+    @transaction = Expenditure.find(params[:id])
   end
 
   # GET /expenditures/new
@@ -28,10 +29,14 @@ class ExpendituresController < ApplicationController
   # POST /expenditures or /expenditures.json
   def create
     @transaction = Expenditure.new(expenditure_params)
+    @transaction.author_id = current_user.id
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to expenditure_url(@transaction), notice: "Expenditure was successfully created." }
+        group_id = params[:expenditure][:group]
+        group_expenditure = GroupExpenditure.new({group_id: group_id, expenditure_id: @transaction.id})
+        group_expenditure.save
+        format.html { redirect_to transaction_url(@transaction), notice: "Expenditure was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +49,7 @@ class ExpendituresController < ApplicationController
   def update
     respond_to do |format|
       if @transaction.update(expenditure_params)
-        format.html { redirect_to expenditure_url(@transaction), notice: "Expenditure was successfully updated." }
+        format.html { redirect_to transaction_url(@transaction), notice: "Expenditure was successfully updated." }
         format.json { render :show, status: :ok, location: @transaction }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,10 +60,14 @@ class ExpendituresController < ApplicationController
 
   # DELETE /expenditures/1 or /expenditures/1.json
   def destroy
-    @transaction.destroy
+    group_expenditure = GroupExpenditure.where({expenditure_id: @transaction.id})
+    group_expenditure[0]&.destroy
 
+    @transaction.destroy
+    # rescue StandardError
+    #   nil
     respond_to do |format|
-      format.html { redirect_to expenditures_url, notice: "Expenditure was successfully destroyed." }
+      format.html { redirect_to transactions_url, notice: "Expenditure was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -71,6 +80,6 @@ class ExpendituresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expenditure_params
-      params.require(:expenditure).permit(:author_id, :name, :amount)
+      params.require(:expenditure).permit(:name, :amount)
     end
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: expenditure, url:new_transaction_path) do |form| %>
+<%= form_with(model: expenditure, url:transactions_path)  do |form| %>
   <% if expenditure.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(expenditure.errors.count, "error") %> prohibited this expenditure from being saved:</h2>
