@@ -17,17 +17,18 @@ RSpec.describe '/expenditures', type: :request do
   # Expenditure. As you add validations to Expenditure, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {name: 'Pizza', amount: 4.8, author_id: 1}
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {name: 'Pizza'}
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
       Expenditure.create! valid_attributes
       get expenditures_url
+      expect(response).to include('hello')
       expect(response).to be_successful
     end
   end
