@@ -12,7 +12,7 @@
   <body class='vh-100 d-flex flex-column'>  
     <%= render 'layouts/nav' %>
     <%= render 'layouts/flash' %>
-    <main class='px-3 px-sm-5 d-flex align-items-center flex-column flex-grow-1'>
+    <main class='px-3 mt-3 px-sm-5 d-flex align-items-center flex-column flex-grow-1'>
     <%= yield %>
     </main>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>  

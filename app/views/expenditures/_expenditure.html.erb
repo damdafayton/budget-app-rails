@@ -1,9 +1,10 @@
+<%= link_to expenditure_path(expenditure.id), class:'w-100' do %>
 <div id="<%= dom_id expenditure %>" class="card w-100">
   <div class='d-flex justify-content-between'>
-    <span>
-      <%= link_to expenditure.name, expenditure_path(expenditure.id), class:'text-secondary' %>
+    <span class="text-secondary">
+      <%= expenditure.name %>
     </span>
-    <span class='fw-bold'>
+    <span class='fw-bold text-dark'>
       <%= expenditure.amount %>$
     </span>
   </div>
@@ -11,3 +12,4 @@
     <%= expenditure.created_at.strftime('%d %b %Y')%>
   </div>
 </div>
+<%end%>

@@ -22,6 +22,10 @@ a {
   text-decoration: none;
 }
 
+body{
+  background-color: #f1f3f2;
+}
+
 i {
   width: 16px;
 }
@@ -66,7 +70,9 @@ h2 {
 .card {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  // box-shadow: 1px 1px 1px black;
+  &:hover{
+    background-color: #edf4ff;
+  }
 }
 
 .font-size-08 {
