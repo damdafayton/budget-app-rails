@@ -1,10 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<section class='d-flex flex-column justify-content-between flex-grow-1'>
-  <%= render @group %>
-
+<section class='d-flex flex-column justify-content-between flex-grow-1 w-100'>
+  <div>
+    <%= render @group %>
+    <% @expenditures.each do |expenditure| %>
+      <%= render partial:'expenditures/expenditure', locals:{expenditure: expenditure} %>
+    <% end %>
+  </div>
   <div class='mb-2'>
-      <%= link_to "Edit this group", edit_group_path(@group), class:'btn btn-warning mb-2 text-white d-block' %>
+      <%= link_to "Edit this group", edit_group_path(@group), class:'btn btn-warning mb-2 text-white' %>
       <span class='d-inline'>
         <%= button_to "Destroy this group", @group, method: :delete, class:'btn btn-danger mb-2' %>
       </span>

@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<div id="expenditures" class='w-100'>
+<div id="expenditures" class='w-100 pb-button-distance'>
   <% @transactions&.each do |transaction| %>
     <%= render partial: 'expenditure', locals: {expenditure: transaction} %>
   <% end %>

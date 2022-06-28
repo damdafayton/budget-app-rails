@@ -1,5 +1,5 @@
 class ExpendituresController < ApplicationController
-  before_action :set_expenditure, only: %i[ show edit update destroy ]
+  before_action :set_expenditure, only: %i[show edit update destroy]
 
   def initialize
     super()
@@ -35,9 +35,9 @@ class ExpendituresController < ApplicationController
     respond_to do |format|
       if @transaction.save
         group_id = params[:expenditure][:group]
-        group_expenditure = GroupExpenditure.new({group_id: group_id, expenditure_id: @transaction.id})
+        group_expenditure = GroupExpenditure.new({ group_id:, expenditure_id: @transaction.id })
         group_expenditure.save
-        format.html { redirect_to expenditure_url(@transaction), notice: "Expenditure was successfully created." }
+        format.html { redirect_to expenditure_url(@transaction), notice: 'Expenditure was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +50,7 @@ class ExpendituresController < ApplicationController
   def update
     respond_to do |format|
       if @transaction.update(expenditure_params)
-        format.html { redirect_to expenditure_url(@transaction), notice: "Expenditure was successfully updated." }
+        format.html { redirect_to expenditure_url(@transaction), notice: 'Expenditure was successfully updated.' }
         format.json { render :show, status: :ok, location: @transaction }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,26 +61,27 @@ class ExpendituresController < ApplicationController
 
   # DELETE /expenditures/1 or /expenditures/1.json
   def destroy
-    group_expenditure = GroupExpenditure.where({expenditure_id: @transaction.id})
+    group_expenditure = GroupExpenditure.where({ expenditure_id: @transaction.id })
     group_expenditure[0]&.destroy
 
     @transaction.destroy
     # rescue StandardError
     #   nil
     respond_to do |format|
-      format.html { redirect_to expenditures_url, notice: "Expenditure was successfully destroyed." }
+      format.html { redirect_to expenditures_url, notice: 'Expenditure was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_expenditure
-      @transaction = Expenditure.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def expenditure_params
-      params.require(:expenditure).permit(:name, :amount)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_expenditure
+    @transaction = Expenditure.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def expenditure_params
+    params.require(:expenditure).permit(:name, :amount)
+  end
 end

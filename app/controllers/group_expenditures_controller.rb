@@ -1,5 +1,5 @@
 class GroupExpendituresController < ApplicationController
-  before_action :set_group_expenditure, only: %i[ show edit update destroy ]
+  before_action :set_group_expenditure, only: %i[show edit update destroy]
 
   # GET /group_expenditures or /group_expenditures.json
   def index
@@ -7,8 +7,7 @@ class GroupExpendituresController < ApplicationController
   end
 
   # GET /group_expenditures/1 or /group_expenditures/1.json
-  def show
-  end
+  def show; end
 
   # GET /group_expenditures/new
   def new
@@ -16,8 +15,7 @@ class GroupExpendituresController < ApplicationController
   end
 
   # GET /group_expenditures/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /group_expenditures or /group_expenditures.json
   def create
@@ -25,7 +23,9 @@ class GroupExpendituresController < ApplicationController
 
     respond_to do |format|
       if @group_expenditure.save
-        format.html { redirect_to group_expenditure_url(@group_expenditure), notice: "Group expenditure was successfully created." }
+        format.html do
+          redirect_to group_expenditure_url(@group_expenditure), notice: 'Group expenditure was successfully created.'
+        end
         format.json { render :show, status: :created, location: @group_expenditure }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,9 @@ class GroupExpendituresController < ApplicationController
   def update
     respond_to do |format|
       if @group_expenditure.update(group_expenditure_params)
-        format.html { redirect_to group_expenditure_url(@group_expenditure), notice: "Group expenditure was successfully updated." }
+        format.html do
+          redirect_to group_expenditure_url(@group_expenditure), notice: 'Group expenditure was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @group_expenditure }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +54,20 @@ class GroupExpendituresController < ApplicationController
     @group_expenditure.destroy
 
     respond_to do |format|
-      format.html { redirect_to group_expenditures_url, notice: "Group expenditure was successfully destroyed." }
+      format.html { redirect_to group_expenditures_url, notice: 'Group expenditure was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group_expenditure
-      @group_expenditure = GroupExpenditure.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def group_expenditure_params
-      params.require(:group_expenditure).permit(:group_id, :expenditure_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group_expenditure
+    @group_expenditure = GroupExpenditure.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def group_expenditure_params
+    params.require(:group_expenditure).permit(:group_id, :expenditure_id)
+  end
 end
