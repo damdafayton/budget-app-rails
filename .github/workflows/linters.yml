@@ -53,10 +53,11 @@ jobs:
       postgres:
         image: postgres:11
         ports:
-        - ${{ job.services.postgres.ports[5432] }}    
+        - 5432:5432    
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ${{ POSTGRES_TEST_DATABASE }}
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
