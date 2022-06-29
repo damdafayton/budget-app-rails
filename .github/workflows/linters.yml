@@ -54,7 +54,6 @@ jobs:
         ports:
         - 5432:5432    
         env:
-          POSTGRES_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: ${{ env.POSTGRES_TEST_DATABASE }}
