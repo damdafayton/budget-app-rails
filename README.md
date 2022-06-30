@@ -15,6 +15,7 @@ A mobile web application where you can manage your budget: you have a list of tr
 You must have Ruby and Rails installed.
 [Documentation to install Rails.](https://guides.rubyonrails.org/v5.0/getting_started.html)
 
+[Click here for live demo.](https://damdafayton-budget.herokuapp.com/)
 
 ### How to run
 
@@ -32,6 +33,10 @@ $ cd budget-app-rails
 $ bundle install
 $ bundle exec rspec
 ```
+
+## Acknowledgements
+
+[Original design idea](https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding?tracking_source=) by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella).
 
 ## Authors
 
