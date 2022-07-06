@@ -2,6 +2,8 @@
 
 A mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 
+![](./ss_budget_app_rails.gif)
+
 ## Built With
 
 - Ruby, Rails, Bootstrap, SASS, Postgresql
@@ -9,7 +11,6 @@ A mobile web application where you can manage your budget: you have a list of tr
 - Authorization: CanCanCan
 - Test: Rspec, Capybara
 - Linter: Rubocop, Stylelint
-
 
 ## Run and test
 You must have Ruby and Rails installed.

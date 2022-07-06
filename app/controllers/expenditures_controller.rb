@@ -29,12 +29,14 @@ class ExpendituresController < ApplicationController
 
   # POST /expenditures or /expenditures.json
   def create
-    @transaction = Expenditure.new(expenditure_params)
+    group_id = params[:expenditure][:group]
+    p expenditure_params
+    _params = expenditure_params.except(:group)
+    @transaction = Expenditure.new(_params)
     @transaction.author_id = current_user.id
 
     respond_to do |format|
       if @transaction.save
-        group_id = params[:expenditure][:group]
         group_expenditure = GroupExpenditure.new({ group_id:, expenditure_id: @transaction.id })
         group_expenditure.save
         format.html { redirect_to expenditure_url(@transaction), notice: 'Expenditure was successfully created.' }
