@@ -1,12 +1,9 @@
 name: Linters
-
 on: pull_request
-
 env:
   FORCE_COLOR: 1
   RUBY_VERSION: 3.1.x
   POSTGRES_TEST_DATABASE: rails_budget_test
-
 jobs:
   rubocop-test:
     name: Rubocop
@@ -80,4 +77,4 @@ jobs:
         if: always()
         with:
           name: coverage-report
-          path: coverage        
+          path: coverage     
